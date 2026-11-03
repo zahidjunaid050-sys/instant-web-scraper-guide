@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Get Website Data Into Google Sheets: 3 Ways</title>
+<meta name="description" content="Three simple ways to bring a table or list from a website into Google Sheets, and how to choose the right one.">
+<link rel="canonical" href="https://sheets-data-guide.pages.dev/">
+<style>
+:root{--bg:#f4f9f5;--fg:#1c2a22;--mut:#566a5e;--line:#d3e3d8;--acc:#127a46;--code:#e6f1ea}
+@media (prefers-color-scheme:dark){:root{--bg:#111a15;--fg:#e6efe9;--mut:#9db2a5;--line:#2a3b31;--acc:#6dd39d;--code:#1c2b23}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.65 system-ui,-apple-system,'Segoe UI',sans-serif}
+main{max-width:700px;margin:0 auto;padding:40px 16px 60px}h1{font-size:2rem;line-height:1.2;margin:0 0 12px}h2{font-size:1.25rem;margin:32px 0 6px}.lead{color:var(--mut)}a{color:var(--acc)}
+code{display:block;background:var(--code);padding:10px 12px;border-radius:6px;font-size:14px;overflow-x:auto;white-space:pre}
+footer{margin-top:40px;padding-top:14px;border-top:1px solid var(--line);color:var(--mut);font-size:14px}
+</style></head><body><main>
+<h1>Get website data into Google Sheets: 3 ways</h1>
+<p class="lead">The best method depends on how the data sits on the page. Start with the simplest one that works.</p>
+<h2>1. Use IMPORTHTML for plain tables and lists</h2>
+<p>If the page shows a real HTML table, Google Sheets can pull it with a formula. The last number picks which table on the page to use.</p>
+<code>=IMPORTHTML("https://example.com/page", "table", 1)</code>
+<p>This works best on simple public pages. It may not see content that loads after the page opens.</p>
+<h2>2. Use IMPORTXML for one specific value</h2>
+<p>IMPORTXML reads parts of a page with an XPath query, which is useful for items such as headings.</p>
+<code>=IMPORTXML("https://example.com/page", "//h2")</code>
+<p>It takes a little more setup, and the formula can break when the site changes its layout.</p>
+<h2>3. Use a browser extension for everything else</h2>
+<p>Lists that load as you scroll, or that spread across many pages, are hard to reach with formulas. A browser extension works on the page you can see, so it can handle them. <a href="https://chromewebstore.google.com/detail/instant-web-scraper/nhpjafkgdcchabagahaendikilkeoeja">Instant Web Scraper</a> is a free option that can clean your table and copy it into Google Sheets. The <a href="https://zahidjunaid050-sys.github.io/instant-web-scraper-guide/">user guide</a> shows the steps.</p>
+<h2>Which should you pick?</h2>
+<ul><li>A simple table: IMPORTHTML.</li><li>One value you want to refresh: IMPORTXML.</li><li>A long or scrolling list: a browser extension.</li></ul>
+<footer>Please follow the terms of the websites you visit. <a href="https://instantwebscraper.blogspot.com/2026/10/privacy-policy-instant-web-scraper.html">Privacy policy</a></footer>
+</main></body></html>
